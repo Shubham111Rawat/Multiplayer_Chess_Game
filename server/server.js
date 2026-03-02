@@ -13,7 +13,11 @@ const app = express(),
       server = http.Server(app),
       io = socket(server);
 
-server.listen(config.port);
+const PORT = process.env.PORT || config.port;
+
+server.listen(PORT, () => {
+  console.log(`Server listening on port ${PORT}`);
+});
 
 games = {};
 
